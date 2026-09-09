@@ -1,0 +1,28 @@
+class Solution {
+
+    private int helper(
+        int i,
+        int j,
+        List<List<Integer>> triangle
+    ) {
+
+        int n = triangle.size();
+
+        // Last row
+        if (i == n - 1) {
+            return triangle.get(i).get(j);
+        }
+
+        int down = helper(i + 1, j, triangle);
+
+        int diagonal = helper(i + 1, j + 1, triangle);
+
+        return triangle.get(i).get(j)
+                + Math.min(down, diagonal);
+    }
+
+    public int minimumTotal(List<List<Integer>> triangle) {
+
+        return helper(0, 0, triangle);
+    }
+}
