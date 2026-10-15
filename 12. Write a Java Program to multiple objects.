@@ -1,0 +1,11 @@
+class MyClass {
+    int x = 5;
+
+    public static void main(String[] args) {
+        MyClass obj1 = new MyClass();
+        MyClass obj2 = new MyClass();
+
+        System.out.println("Object 1: " + obj1.x);
+        System.out.println("Object 2: " + obj2.x);
+    }
+}
