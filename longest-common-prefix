@@ -1,0 +1,42 @@
+class Solution {
+    public String longestCommonPrefix(String[] strs) {
+
+        int minLen = Integer.MAX_VALUE;
+
+        for (String str : strs) {
+            minLen = Math.min(minLen, str.length());
+        }
+
+        int low = 0;
+        int high = minLen;
+        int ans = 0;
+
+        while (low <= high) {
+
+            int mid = low + (high - low) / 2;
+
+            if (isCommonPrefix(strs, mid)) {
+                ans = mid;
+                low = mid + 1;
+            } else {
+                high = mid - 1;
+            }
+        }
+
+        return strs[0].substring(0, ans);
+    }
+
+    private boolean isCommonPrefix(String[] strs, int length) {
+
+        String prefix = strs[0].substring(0, length);
+
+        for (int i = 1; i < strs.length; i++) {
+
+            if (!strs[i].startsWith(prefix)) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+}
